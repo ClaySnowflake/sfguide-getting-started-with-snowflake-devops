@@ -70,27 +70,27 @@ create or alter task email_notification
       if (:options = '[]') then
         CALL SYSTEM$SEND_EMAIL(
             'email_integration',
-            '<insert your email here>', -- INSERT YOUR EMAIL HERE
+            'clay.chaffins@snowflake.com', -- INSERT YOUR EMAIL HERE
             'New data successfully processed: No suitable vacation spots found.',
             'The query did not return any results. Consider adjusting your filters.');
       end if;
 
       let query varchar := 'Considering the data provided below in JSON format, pick the best city for a family vacation in summer?
-      Explain your choise, offer a short description of the location and provide tips on what to pack for the vacation considering the weather conditions? 
+      Explain your choice, offer a short description of the location and provide tips on what to pack for the vacation considering the weather conditions? 
       Finally, could you provide a detailed plan of daily activities for a one week long vacation covering the highlights of the chosen destination?\n\n';
       
       let response varchar := (SELECT SNOWFLAKE.CORTEX.COMPLETE('mistral-7b', :query || :options));
 
       CALL SYSTEM$SEND_EMAIL(
         'email_integration',
-        '<insert your email here>', -- INSERT YOUR EMAIL HERE
+        'clay.chaffins@snowflake.com', -- INSERT YOUR EMAIL HERE
         'New data successfully processed: The perfect place for your summer vacation has been found.',
         :response);
     exception
         when EXPRESSION_ERROR then
             CALL SYSTEM$SEND_EMAIL(
             'email_integration',
-            '<insert your email here>', -- INSERT YOUR EMAIL HERE
+            'clay.chaffins@snowflake.com', -- INSERT YOUR EMAIL HERE
             'New data successfully processed: Cortex LLM function inaccessible.',
             'It appears that the Cortex LLM functions are not available in your region');
     end;
@@ -105,7 +105,7 @@ alter task email_notification resume;
 execute task vacation_spots_update;
 
 
-/*
+
 -- SQL commands to monitor the progress of tasks
 
 -- Get a list of tasks
@@ -127,4 +127,4 @@ SELECT
 FROM TABLE(INFORMATION_SCHEMA.TASK_HISTORY())
 WHERE STATE = 'SCHEDULED'
 ORDER BY COMPLETED_TIME DESC;
-*/
+
