@@ -1,4 +1,4 @@
--- new line to test github stuff
+-- new line to test github stuff editing from github
 USE ROLE ACCOUNTADMIN;
 
 CREATE OR ALTER WAREHOUSE QUICKSTART_WH 
