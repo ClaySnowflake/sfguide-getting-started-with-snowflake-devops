@@ -1,5 +1,5 @@
 -- new line to test github stuff editing from github
-USE ROLE ACCOUNTADMIN;
+USE ROLE SYSADMIN;
 
 CREATE OR ALTER WAREHOUSE QUICKSTART_WH 
   WAREHOUSE_SIZE = XSMALL 
