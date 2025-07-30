@@ -13,3 +13,8 @@ By the end of the session, you will have learned everything you need to get star
 ## Step-By-Step Guide
 
 For prerequisites, environment setup, step-by-step guide and instructions, please refer to the [QuickStart Guide](https://quickstarts.snowflake.com/guide/getting_started_with_snowflake_devops/index.html).
+
+
+
+
+This is an edit from github
